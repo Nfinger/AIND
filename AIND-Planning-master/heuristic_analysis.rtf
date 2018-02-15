@@ -1,0 +1,111 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1559
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue0;\red194\green126\blue101;
+\red202\green202\blue202;\red27\green31\blue34;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\csgray\c0\c0;\cssrgb\c80784\c56863\c47059;
+\cssrgb\c83137\c83137\c83137;\cssrgb\c14118\c16078\c18039;\cssrgb\c100000\c100000\c100000;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \ul \ulc0 Uninformed Search Analysis\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+\ulnone The Optimal Path for Air Cargo Problem 1 has length 6 and an example is shown below\
+        Load(C1, P1, SFO)\
+        Load(C2, P2, JFK)\
+        Fly(P1, SFO, JFK)\
+        Fly(P2, JFK, SFO)\
+        Unload(C1, P1, JFK)\
+        Unload(C2, P2, SFO)
+\f1 \cf5 \cb1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0 \cf2 \cb3 \kerning1\expnd0\expndtw0 \ul \
+Problem 1:\ulnone \
+Search Strategy 		    Expansions   Path Length  Time elapsed\
+breadth first search	                  43          	         6            0.0325786\
+breadth first tree search            1458                6            0.9657307\
+depth first graph search            12                    12          0.0075322\
+depth limited search                  101                  50          0.0951324\
+uniform cost search                   55                    6            0.0387649\
+recursive best first search         4229                 6           2.6420850\
+greedy best first graph search   7                      6           0.0050427\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+The Optimal Path for Air Cargo Problem 2 has length 9 and an example is shown below\
+        Load(C1, P1, SFO)\
+        Load(C2, P2, JFK)\
+        Load(C3, P3, ATL)\
+        Fly(P1, SFO, JFK)\
+        Fly(P2, JFK, SFO)\
+        Fly(P3, ATL, SFO)\
+        Unload(C3, P3, SFO)\
+        Unload(C2, P2, SFO)\
+        Unload(C1, P1, JFK)
+\f1 \cf5 \cb1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0 \cf2 \cb3 \kerning1\expnd0\expndtw0 \
+\ul Problem 2:\
+\ulnone Search Strategy 		    Expansions   Path Length    Time elapsed\
+breadth_first_search                   3401                9                13.9891\
+depth_first_graph_search           187                  187             0.70826\
+uniform_cost_search                   4761                9                12.47857\
+greedy_best_first_graph_search 550                  9                1.375950\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf2 \expnd0\expndtw0\kerning0
+The Optimal Path for Air Cargo Problem 3 has length 12 and an example is shown below\
+        Load(C1, P1, SFO)\
+        Load(C2, P2, JFK)\
+        Fly(P1, SFO, ATL)\
+        Load(C3, P1, ATL)\
+        Fly(P2, JFK, ORD)\
+        Load(C4, P2, ORD)\
+        Fly(P1, ATL, JFK)\
+        Fly(P2, ORD, SFO)\
+        Unload(C4, P2, SFO)\
+        Unload(C3, P1, JFK)\
+        Unload(C2, P2, SFO)\
+        Unload(C1, P1, JFK\kerning1\expnd0\expndtw0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf2 \ul Problem 3:\ulnone \
+Search Strategy 		    Expansions   Path Length    Time elapsed\
+breadth_first_search                   14491              12               107.40521584003\
+depth_first_graph_search            3300                3179          51.725192012032494\
+uniform_cost_search                   17783              12               54.70459768897854\
+greedy_best_first_graph_search 4031                22              12.423212600988336\
+\
+As we can see above, Breadth First Search and Uniform Cost were the only two search strategies that were able to find the optimal path length. However, Depth First Search was consistently the fastest implementations. The strategy that I would recommend to find the optimal path length would be Uniform Cost, because consistently found the optima path length, much like Breadth First Search, however Uniform Cost performed faster than BFS.\
+\
+\
+\ul Informed Search Analysis\ulnone \
+\
+\ul Problem 1:\ulnone \
+Search Strategy 		    Expansions   Path Length    Time elapsed\
+A* with h1  				55                6                  0.04544836300192401\
+A* with h_ignore_preconditions    41                6      	       0.039756847952958196\
+A* with h_pg_levelsum	          11                 6         	       1.4439715900225565\
+\
+\ul Problem 2:\ulnone \
+Search Strategy 		    Expansions   Path Length    Time elapsed\
+A* with h1  				4761               9                  15.567265372024849\
+A* with h_ignore_preconditions    1450                9      	       	6.394095312978607\
+A* with h_pg_levelsum	           86                   9       	  	1201.15900225565\
+\
+\ul Problem 3:\ulnone \
+Search Strategy 		    Expansions   Path Length    Time elapsed\
+A* with h1  				17783             12                  75.28117345599458\
+A* with h_ignore_preconditions     5003               12      	  23.969229681999423\
+\
+While all heuristics were able to find the optimal path length only the ignore preconditions heuristic was able to return the answer in a timely manner. This leads me to the conclusion that the recommended heuristic is A* search with the Ignore Preconditions heuristic.\
+\
+\ul Explanations:\
+\ulnone DFS is unable to find the optimal path length because if it chooses the incorrect path then it has to traverse the entire path before it moves on to the next path. BFS is a non-optimal search in general case while UCS is. In our case though where the graph is acyclic  and all the edges have equal weights it finds a shortest path, which happens to be an optimal solution in the problem settings. BFS stops as soon as it finds the first path to the goal node. UCS on the other hand explores several alternative paths and chooses the shortest out of them. That being said because BFS uses a queue instead of a stack it is not as efficient as UCS cause it to have a slower execution.\
+The ignore preconditions heuristic has a faster execution than the level sum because it does not have to worry about satisfying the preconditions of an action, this can cause problems as some action may undo other actions and some operations can achieve multiple goals, but it is still quicker than checking all the possible actions at a level to see if you have reached a goal state.\
+\
+\ul References:\ulnone \
+\cf6 \cb7 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec6 Artificial Intelligence: A Modern Approach (2010, 3rd Ed.), by S. Russell & P. Norvig}
